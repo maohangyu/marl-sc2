@@ -2,36 +2,35 @@
 refer https://github.com/oxwhirl/smac 
 
 ## Installing SMAC
-SMAC is WhiRL's environment for research in the field of collaborative multi-agent reinforcement learning (MARL) based on Blizzard's StarCraft II RTS game. SMAC makes use of Blizzard's StarCraft II Machine Learning API and DeepMind's PySC2 to provide a convenient interface for autonomous agents to interact with StarCraft II, getting observations and performing actions. Unlike the PySC2, SMAC concentrates on decentralised micromanagement scenarios, where each unit of the game is controlled by an individual RL agent. 
+SMAC is WhiRL's environment for research in the field of collaborative multi-agent reinforcement learning (MARL) based on Blizzard's StarCraft II RTS game. SMAC makes use of Blizzard's StarCraft II Machine Learning API and DeepMind's PySC2 to provide a convenient interface for autonomous agents to interact with StarCraft II, getting observations and performing actions. Unlike the PySC2, SMAC concentrates on decentralised micromanagement scenarios, where each unit of the game is controlled by an individual RL agent.   
 
-You can install SMAC by using the following command: 
+You can install SMAC by using the following command:  
 $ pip install git+https://github.com/oxwhirl/smac.git 
 
-Alternatively, you can clone the SMAC repository and then install smac with its dependencies: 
-$ git clone https://github.com/oxwhirl/smac.git 
-$ pip install smac/ 
+Alternatively, you can clone the SMAC repository and then install smac with its dependencies:  
+$ git clone https://github.com/oxwhirl/smac.git  
+$ pip install smac/  
 
-You may also need to upgrade pip: pip install --upgrade pip for the install to work.
+You may also need to upgrade pip: pip install --upgrade pip for the install to work.  
 
 ## Installing StarCraftII
-SMAC is based on the full game of StarCraft II (versions >= 3.16.1). To install the game, follow the commands bellow. 
-refer https://github.com/oxwhirl/pymarl/blob/master/install_sc2.sh
+SMAC is based on the full game of StarCraft II (versions >= 3.16.1). To install the game, follow the commands bellow.  
 
-By default, the game is expected to be in ~/StarCraftII/ directory, so we run the following command in the ~ directory: 
-$ wget http://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip 
-$ unzip -P iagreetotheeula SC2.4.10.zip 
-this will result in a ~/StarCraftII directory 
+By default, the game is expected to be in ~/StarCraftII/ directory, so run the following command in the ~ directory:  
+$ wget http://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip  
+$ unzip -P iagreetotheeula SC2.4.10.zip  
+this will result in a ~/StarCraftII directory  
 
-note that do NOT run the rm command, we will use it in other machine 
-$ rm -rf SC2.4.10.zip 
+note that do NOT run the rm command, we will use it in other machine  
+$ rm -rf SC2.4.10.zip  
 
 ## Adding SMAC maps
-$ wget https://github.com/oxwhirl/smac/releases/download/v0.1-beta1/SMAC_Maps.zip   if having errors, just download it manually 
-$ unzip SMAC_Maps.zip
-$ mv SMAC_Maps ~/StarCraftII/Maps 
+$ wget https://github.com/oxwhirl/smac/releases/download/v0.1-beta1/SMAC_Maps.zip   // if having errors, just download it manually 
+$ unzip SMAC_Maps.zip  
+$ mv SMAC_Maps ~/StarCraftII/Maps  
 
-note that do NOT run the rm command, we will use it in other machine : 
-$ rm -rf SMAC_Maps.zip 
+note that do NOT run the rm command, we will use it in other machine:  
+$ rm -rf SMAC_Maps.zip  
 
 
 
@@ -40,25 +39,25 @@ $ rm -rf SMAC_Maps.zip
 # Check the installation
 
 ## List the maps
-To see the list of SMAC maps, together with the number of ally and enemy units and episode limit, run: 
-$ python -m smac.bin.map_list 
+To see the list of SMAC maps, together with the number of ally and enemy units and episode limit, run:  
+$ python -m smac.bin.map_list  
 
 ## Testing SMAC
-Please run the following command to make sure that smac and its maps are properly installed. 
-$ python -m smac.examples.random_agents
+Please run the following command to make sure that smac and its maps are properly installed.  
+$ python -m smac.examples.random_agents  
 
 ## Watch a replay
-You can watch saved replays by running: 
-$ python -m pysc2.bin.play --norender --rgb_minimap_size 0 --replay <path-to-replay>
-This works for any replay as long as the map can be found by the game. 
-For more information, please refer to [PySC2 documentation](https://github.com/deepmind/pysc2). 
+You can watch saved replays by running:  
+$ python -m pysc2.bin.play --norender --rgb_minimap_size 0 --replay <path-to-replay>  
+This works for any replay as long as the map can be found by the game.  
+For more information, please refer to [PySC2 documentation](https://github.com/deepmind/pysc2).  
 
 
 
 
 
 # Code Example
-Below is a small code example which illustrates how SMAC can be used. Here, individual agents execute random policies after receiving the observations and global state from the environment. 
+Below is a small code example which illustrates how SMAC can be used. Here, individual agents execute random policies after receiving the observations and global state from the environment.  
 
   from smac.env import StarCraft2Env
   import numpy as np
@@ -100,19 +99,19 @@ Below is a small code example which illustrates how SMAC can be used. Here, indi
 
 
 # Documentation
-For the detailed description of the environment, read the [SMAC documentation](https://github.com/oxwhirl/smac/blob/master/docs/smac.md). 
-The initial results of our experiments using SMAC can be found in the accompanying paper.
+For the detailed description of the environment, read the [SMAC documentation](https://github.com/oxwhirl/smac/blob/master/docs/smac.md).  
+The initial results of our experiments using SMAC can be found in the accompanying paper.  
 
 
 
 
 
 # Citing SMAC
-If you use SMAC in your research, please cite the SMAC paper. 
+If you use SMAC in your research, please cite the SMAC paper.  
 
-M. Samvelyan, T. Rashid, C. Schroeder de Witt, G. Farquhar, N. Nardelli, T.G.J. Rudner, C.-M. Hung, P.H.S. Torr, J. Foerster, S. Whiteson. The StarCraft Multi-Agent Challenge, CoRR abs/1902.04043, 2019.
+M. Samvelyan, T. Rashid, C. Schroeder de Witt, G. Farquhar, N. Nardelli, T.G.J. Rudner, C.-M. Hung, P.H.S. Torr, J. Foerster, S. Whiteson. The StarCraft Multi-Agent Challenge, CoRR abs/1902.04043, 2019.  
 
-In BibTeX format:
+In BibTeX format:  
 
   @article{samvelyan19smac,
     title = {{The} {StarCraft} {Multi}-{Agent} {Challenge}},
