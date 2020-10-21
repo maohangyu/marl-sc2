@@ -21,15 +21,15 @@ $ wget http://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip
 $ unzip -P iagreetotheeula SC2.4.10.zip  
 this will result in a ~/StarCraftII directory  
 
-note that do NOT run the rm command, we will use it in other machine  
+Note that do NOT run the rm command, we will use it in other machine:  
 $ rm -rf SC2.4.10.zip  
 
 ## Adding SMAC maps
-$ wget https://github.com/oxwhirl/smac/releases/download/v0.1-beta1/SMAC_Maps.zip   // if having errors, just download it manually 
+$ wget https://github.com/oxwhirl/smac/releases/download/v0.1-beta1/SMAC_Maps.zip   // if having errors, just download it manually  
 $ unzip SMAC_Maps.zip  
 $ mv SMAC_Maps ~/StarCraftII/Maps  
 
-note that do NOT run the rm command, we will use it in other machine:  
+Note that do NOT run the rm command, we will use it in other machine:  
 $ rm -rf SMAC_Maps.zip  
 
 
@@ -59,40 +59,40 @@ For more information, please refer to [PySC2 documentation](https://github.com/d
 # Code Example
 Below is a small code example which illustrates how SMAC can be used. Here, individual agents execute random policies after receiving the observations and global state from the environment.  
 
-  from smac.env import StarCraft2Env
-  import numpy as np
+        from smac.env import StarCraft2Env
+        import numpy as np
 
-  def main():
-      env = StarCraft2Env(map_name="8m")
-      env_info = env.get_env_info()
+        def main():
+            env = StarCraft2Env(map_name="8m")
+            env_info = env.get_env_info()
 
-      n_actions = env_info["n_actions"]
-      n_agents = env_info["n_agents"]
+            n_actions = env_info["n_actions"]
+            n_agents = env_info["n_agents"]
 
-      n_episodes = 10
+            n_episodes = 10
 
-      for e in range(n_episodes):
-          env.reset()
-          terminated = False
-          episode_reward = 0
+            for e in range(n_episodes):
+                env.reset()
+                terminated = False
+                episode_reward = 0
 
-          while not terminated:
-              obs = env.get_obs()
-              state = env.get_state()
+                while not terminated:
+                    obs = env.get_obs()
+                    state = env.get_state()
 
-              actions = []
-              for agent_id in range(n_agents):
-                  avail_actions = env.get_avail_agent_actions(agent_id)
-                  avail_actions_ind = np.nonzero(avail_actions)[0]
-                  action = np.random.choice(avail_actions_ind)
-                  actions.append(action)
+                    actions = []
+                    for agent_id in range(n_agents):
+                        avail_actions = env.get_avail_agent_actions(agent_id)
+                        avail_actions_ind = np.nonzero(avail_actions)[0]
+                        action = np.random.choice(avail_actions_ind)
+                        actions.append(action)
 
-              reward, terminated, _ = env.step(actions)
-              episode_reward += reward
+                    reward, terminated, _ = env.step(actions)
+                    episode_reward += reward
 
-          print("Total reward in episode {} = {}".format(e, episode_reward))
+                print("Total reward in episode {} = {}".format(e, episode_reward))
 
-      env.close()
+            env.close()
 
 
 
@@ -113,10 +113,10 @@ M. Samvelyan, T. Rashid, C. Schroeder de Witt, G. Farquhar, N. Nardelli, T.G.J. 
 
 In BibTeX format:  
 
-  @article{samvelyan19smac,
-    title = {{The} {StarCraft} {Multi}-{Agent} {Challenge}},
-    author = {Mikayel Samvelyan and Tabish Rashid and Christian Schroeder de Witt and Gregory Farquhar and Nantas Nardelli and Tim G. J. Rudner and Chia-Man Hung and Philiph H. S. Torr and Jakob Foerster and Shimon Whiteson},
-    journal = {CoRR},
-    volume = {abs/1902.04043},
-    year = {2019},
-  }
+        @article{samvelyan19smac,
+          title = {{The} {StarCraft} {Multi}-{Agent} {Challenge}},
+          author = {Mikayel Samvelyan and Tabish Rashid and Christian Schroeder de Witt and Gregory Farquhar and Nantas Nardelli and Tim G. J. Rudner and Chia-Man Hung and Philiph H. S. Torr and Jakob Foerster and Shimon Whiteson},
+          journal = {CoRR},
+          volume = {abs/1902.04043},
+          year = {2019},
+        }
